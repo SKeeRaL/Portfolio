@@ -1,0 +1,141 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* MAIN */
+.main {
+  width: 100%;
+  background-color:#353535;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  background-color: #20232a;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 25px;b */
+  height: 300px;
+}
+
+header .left {
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+
+header .left img {
+  transition: 2000ms;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+header .left .avatar:hover {
+  transition: 1300ms;
+  transform: scale(1.1) rotate(360deg);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+header .left .avatar {
+  animation: rotate 1.5s ease;
+
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+header .left img:hover {
+  width: 150px;
+  height: 150px;
+}
+
+header .left .contact {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+} 
+
+header .left .contact .contact-item {
+  margin-right: 10px;
+  padding: 10px;
+  height: 35px;
+  width: 35px;
+  background-color: #474646;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+header .left .contact .contact-item:hover {
+  background-color: #797979;
+}
+
+.main .body {
+  width: 100%;
+  display: flex;
+}
+
+.main .body .left{
+  width: 70%;
+  padding: 70px 100px;
+  margin-right: auto;
+}
+
+.main .body .left section {
+  background-color: #282828;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.main .body .left section h2 {
+  margin-bottom: 12px;  
+}
+
+.main .body .left section.projects article .feature-img {
+  transition: 200ms;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.main .body .left section.projects article .feature-img:hover {
+  transition: 200ms;
+  transform: scale(1.2);
+}
+
+.main .body .right{
+  width: 30%;
+  padding: 70px 100px;
+  margin-left: -100px;
+
+}
+
+.main .body .right section {
+  background-color: #282828;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
