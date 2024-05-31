@@ -7,7 +7,7 @@ const items = [
         id:1,
         title: "My Navy",
         img:"/navy.png",
-        desc:"Jeu de bataille navale en local réalisé en c, à l'aide des signaux ainsi que la libraiire Csfml pour le graphisme",
+        desc:"Jeu de bataille navale en local réalisé en c, à l'aide des signaux ainsi que la librairie Csfml pour le graphisme",
     },
     {
         id:2,
@@ -19,7 +19,7 @@ const items = [
         id:3,
         title: "Epytodo",
         img:"/epytodo.png",
-        desc: "Epytodo est un projet dont le but est de réaliser une todo list et nottament de gérer le back-end en js avec express et d'intéragir avec une base de données Maria DB",
+        desc: "Epytodo est un projet dont le but est de réaliser une todo list et notamment de gérer le back-end en js avec express et d'intéragir avec une base de données Maria DB",
     }
 
 ]
