@@ -13,7 +13,7 @@ Portfolio personnel développé avec React + Vite. Présente mes projets réalis
 | Projet | Stack |
 |---|---|
 | L'Area | React, Node.js, Docker |
-| R-Type | C++, SFML, ECS, UDP |
+| R-Type | C++, SFML, ECS, UDP | [github.com/SKeeRaL/R-Type](https://github.com/SKeeRaL/R-Type) |
 | NanoTekSpice | C++, Design Patterns |
 | Raytracer | C++, Math 3D |
 | Zappy | C, C++, Python, SFML |
