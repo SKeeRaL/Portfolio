@@ -2,105 +2,135 @@
 
 .portfolio {
   position: relative;
+  background: var(--bg-primary);
+  padding-bottom: 80px;
 
   .progress {
     position: sticky;
-    top: 0;
+    top: 36px;
     left: 0;
-    padding-top: 50px;
+    padding: 50px 0 18px;
     text-align: center;
-    color: orange;
-    font-size: 36px;
+    background: linear-gradient(to bottom, var(--bg-primary) 70%, transparent);
+    z-index: 10;
 
-    @include mobile {
-      padding-top: calc(100vh - 100px);
-      font-size: 24px;
+    h1 {
+      font-size: 46px;
+      font-weight: 800;
+      margin-bottom: 8px;
+
+      @include mobile {
+        font-size: 32px;
+      }
+
+      .highlight {
+        background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 16px;
     }
 
     .progressBar {
-      height: 10px;
-      background-color: white;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+      transform-origin: left;
+      max-width: 600px;
+      margin: 0 auto;
     }
   }
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  .grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 48px 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      padding: 24px 20px 40px;
+    }
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
 
-    .wrapper {
-      max-width: 1366px;
-      height: 100%;
-      margin: auto;
+    &:hover {
+      border-color: rgba(124, 111, 239, 0.45);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), 0 0 30px rgba(124, 111, 239, 0.12);
+    }
+
+    .card-header {
+      padding: 22px 24px 18px;
+      border-bottom: 1px solid var(--border);
+
+      h2 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+    }
+
+    .card-body {
+      padding: 18px 22px 22px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 50px;
+      flex-direction: column;
+      gap: 14px;
 
-      @include mobile {
-        flex-direction: column;
+      p {
+        color: var(--text-muted);
+        font-size: 13.5px;
+        line-height: 1.75;
       }
 
-      .imageContainer {
-        flex: 1;
-        height: 50%;
-      
-        @include mobile {
-          width: 100%;
-          max-height: 300px;
-        }
-      
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain; // change 'cover' to 'contain'
-      
-          @include mobile {
-            object-fit: contain;
-          }
-        }
-      }
-
-      .textContainer {
-        flex: 1;
+      .tags {
         display: flex;
-        flex-direction: column;
-        gap: 30px;
+        flex-wrap: wrap;
+        gap: 7px;
 
-        @include mobile {
-          transform: none !important;
-          padding: 10px;
-          align-items: center;
-          text-align: center;
+        .tag {
+          padding: 3px 10px;
+          background: rgba(124, 111, 239, 0.1);
+          border: 1px solid rgba(124, 111, 239, 0.2);
+          border-radius: 100px;
+          font-size: 11px;
+          color: #a89cff;
+          font-family: "JetBrains Mono", monospace;
+          font-weight: 500;
         }
+      }
 
-        h2 {
-          font-size: 72px;
+      button {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 16px;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text-muted);
+        font-size: 13px;
+        font-family: "Inter", sans-serif;
+        cursor: pointer;
+        width: fit-content;
+        transition: border-color 0.2s, color 0.2s;
 
-          @include mobile {
-            font-size: 36px;
-          }
-        }
-
-        p {
-          color: gray;
-          font-size: 20px;
-
-          @include mobile {
-            font-size: 16px;
-          }
-        }
-
-        button {
-          background-color: orange;
-          border: none;
-          border-radius: 10px;
-          padding: 10px;
-          width: 200px;
-          cursor: pointer;
+        &:hover {
+          border-color: var(--accent-purple);
+          color: var(--accent-purple);
         }
       }
     }

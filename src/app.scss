@@ -1,44 +1,82 @@
+:root {
+  --bg-primary: #06060f;
+  --bg-secondary: #0e0e23;
+  --bg-card: #10102a;
+  --accent-purple: #7c6fef;
+  --accent-cyan: #00d4ff;
+  --accent-green: #00e87a;
+  --text-primary: #e2e8f0;
+  --text-muted: #64748b;
+  --border: rgba(124, 111, 239, 0.2);
+}
+
 html {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@mixin mobile {
+  @media (max-width: 738px) {
+    @content;
   }
-  
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "DM Sans", sans-serif;
+}
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
   }
-  
-  body {
-    background-color: #0c0c1d;
-    color: lightgray;
+}
+@mixin desktop {
+  @media (max-width: 1366px) {
+    @content;
   }
-  
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+
+  p {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
   a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  section {
-    height: 100vh;
-    width: 100vw;
-    scroll-snap-align: center;
-    overflow: hidden;
-  }
-  
-  @mixin mobile {
-    @media (max-width: 738px) {
-      @content;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--accent-purple);
+    font-family: "JetBrains Mono", monospace;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--accent-cyan);
     }
   }
-  @mixin tablet {
-    @media (max-width: 1024px) {
-      @content;
-    }
+
+  .copy {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    opacity: 0.5;
   }
-  @mixin desktop {
-    @media (max-width: 1366px) {
-      @content;
-    }
-  }
+}

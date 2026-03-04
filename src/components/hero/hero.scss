@@ -1,99 +1,277 @@
 @import "../../app.scss";
 
 .hero {
-  height: calc(100vh - 100px);
+  height: 100%;
   overflow: hidden;
-  background: linear-gradient(180deg, #0c0c1d, #111132);
+  background: var(--bg-primary);
   position: relative;
 
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124, 111, 239, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 111, 239, 0.05) 1px, transparent 1px);
+    background-size: 55px 55px;
+    z-index: 0;
+  }
+
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    z-index: 0;
+    pointer-events: none;
+
+    &-1 {
+      width: 500px;
+      height: 500px;
+      background: rgba(124, 111, 239, 0.14);
+      top: -150px;
+      right: 15%;
+    }
+
+    &-2 {
+      width: 320px;
+      height: 320px;
+      background: rgba(0, 212, 255, 0.09);
+      bottom: -80px;
+      left: 5%;
+    }
+  }
+
   .wrapper {
-    max-width: 1366px;
+    max-width: 1300px;
     height: 100%;
     margin: auto;
-
-    .textContainer {
-      width: 50%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 40px;
-
-      @include mobile {
-        height: 50%;
-        width: 100%;
-        gap: 20px;
-        align-items: center;
-        text-align: center;
-      }
-
-      h2 {
-        font-size: 30px;
-        color: rebeccapurple;
-        letter-spacing: 10px;
-      }
-
-      h1 {
-        font-size: 88px;
-
-        @include mobile {
-          font-size: 36px;
-        }
-      }
-
-      .buttons {
-        button {
-          padding: 20px;
-          border: 1px solid white;
-          border-radius: 10px;
-          background-color: transparent;
-          color: white;
-          margin-right: 20px;
-          cursor: pointer;
-          font-weight: 300;
-        }
-      }
-
-      img {
-        width: 50px;
-      }
-    }
-  }
-
-  .imageContainer {
-    height: 80%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-right: 100px;
-    margin-top: 100px;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
 
     @include mobile {
-        height: 50%;
-        width: 100%;
-        top: unset;
-        bottom: 0;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 20px 20px;
+      gap: 32px;
+    }
+  }
+
+  .textContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    @include mobile {
+      align-items: center;
+      text-align: center;
     }
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 2s; // Ajouté pour animer la rotation
+    .greeting {
+      font-size: 17px;
+      color: var(--accent-purple);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 68px;
+      font-weight: 800;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ffffff 20%, #b8abff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      @include tablet {
+        font-size: 52px;
+      }
+
+      @include mobile {
+        font-size: 40px;
+      }
+    }
+
+    .role {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-family: "JetBrains Mono", monospace;
+      min-height: 34px;
+
+      @include mobile {
+        font-size: 15px;
+        justify-content: center;
+      }
+
+      .role-prefix {
+        color: var(--accent-green);
+        font-weight: 700;
+      }
+
+      .role-text {
+        color: var(--accent-cyan);
+        display: inline-block;
+      }
+
+      .cursor {
+        color: var(--accent-purple);
+        animation: blink 1s step-end infinite;
+        font-weight: 700;
+      }
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      @include mobile {
+        justify-content: center;
+      }
+
+      .tag {
+        padding: 5px 14px;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        font-size: 12px;
+        color: var(--text-muted);
+        background: rgba(124, 111, 239, 0.07);
+        font-family: "JetBrains Mono", monospace;
+        transition: all 0.2s;
 
         &:hover {
-            transform: rotate(360deg); // Ajouté pour faire tourner l'image de 360 degrés lors du survol
+          border-color: var(--accent-purple);
+          color: var(--accent-purple);
+          background: rgba(124, 111, 239, 0.12);
         }
-    }
+      }
     }
 
-  .slidingTextContainer {
-    position: absolute;
-    font-size: 50vh;
-    bottom: -120px;
-    white-space: nowrap;
-    color: #ffffff09;
-    width: 50%;
-    font-weight: bold;
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+
+      @include mobile {
+        justify-content: center;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 22px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background: var(--accent-purple);
+        border: none;
+        color: white;
+
+        &:hover {
+          background: #9080ff;
+        }
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+
+        &:hover {
+          border-color: var(--accent-purple);
+          color: var(--accent-purple);
+        }
+      }
+    }
   }
+
+  .terminalCard {
+    width: 430px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow:
+      0 0 0 1px rgba(124, 111, 239, 0.05),
+      0 20px 60px rgba(0, 0, 0, 0.4),
+      0 0 80px rgba(124, 111, 239, 0.08);
+
+    @include tablet {
+      width: 360px;
+    }
+
+    @include mobile {
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .terminal-header {
+      background: #15152e;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-bottom: 1px solid var(--border);
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+
+        &.red   { background: #ff5f57; }
+        &.yellow { background: #febc2e; }
+        &.green  { background: #28c840; }
+      }
+
+      .terminal-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-left: 10px;
+      }
+    }
+
+    .terminal-body {
+      padding: 22px 22px 26px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13.5px;
+      line-height: 1.9;
+
+      .t-line {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .t-prefix {
+        color: var(--accent-green);
+        font-weight: 700;
+        white-space: pre;
+      }
+
+      .t-blink {
+        animation: blink 1s step-end infinite;
+        color: var(--accent-purple);
+      }
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }

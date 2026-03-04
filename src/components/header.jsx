@@ -10,7 +10,7 @@ const Header = () => {
             <img className="avatar" src={imagePath('./avatar.svg')} alt="user" style={{width: "200px", height: "200px"}} />
                 <div className="user-info">
                     <h1>Erwan Itier</h1>
-                    <h3>Etudiant à Epitech</h3>
+                    <h3>Etudiant à Epitech Montpellier</h3>
                     <div className="contact">
                     <a href="https://www.linkedin.com/in/erwan-itier" target="blank">
                         <div className="contact-item">
