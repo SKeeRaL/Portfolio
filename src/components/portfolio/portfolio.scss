@@ -1,5 +1,116 @@
 @import "../../app.scss";
 
+/* ── Video Modal ─────────────────────────────────────────── */
+.video-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.video-modal-box {
+  background: var(--bg-card);
+  border: 1px solid rgba(124, 111, 239, 0.35);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 60px rgba(124, 111, 239, 0.15);
+}
+
+.video-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.video-modal-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.video-speed-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .speed-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .speed-btn {
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "JetBrains Mono", monospace;
+    cursor: pointer;
+    transition: border-color 0.18s, color 0.18s, background 0.18s;
+
+    &:hover {
+      border-color: var(--accent-purple);
+      color: var(--accent-purple);
+    }
+
+    &.active {
+      border-color: var(--accent-purple);
+      background: rgba(124, 111, 239, 0.15);
+      color: #a89cff;
+    }
+  }
+}
+
+.video-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+
+  &:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.video-modal-player {
+  width: 100%;
+  display: block;
+  max-height: 75vh;
+  background: #000;
+}
+
+.gif-modal-box {
+  max-width: 700px;
+}
+
+.gif-modal-img {
+  width: 100%;
+  display: block;
+  max-height: 75vh;
+  object-fit: contain;
+  background: #000;
+}
+
+/* ── Portfolio ───────────────────────────────────────────── */
 .portfolio {
   position: relative;
   background: var(--bg-primary);
@@ -57,6 +168,187 @@
     @include mobile {
       grid-template-columns: 1fr;
       padding: 24px 20px 40px;
+    }
+
+    &.featured-grid {
+      grid-template-columns: 1fr;
+      padding-bottom: 0;
+    }
+  }
+
+  /* ── Featured card ──────────────────────────────────────── */
+  .card-featured {
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+    overflow: hidden;
+
+    &:hover {
+      border-color: rgba(124, 111, 239, 0.55) !important;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45), 0 0 40px rgba(124, 111, 239, 0.18) !important;
+    }
+
+    .featured-video-wrap,
+    .featured-gif-wrap {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: #000;
+      height: 340px;
+
+      @include mobile {
+        height: 220px;
+      }
+    }
+
+    .featured-video-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease, filter 0.45s ease;
+      filter: brightness(0.6);
+    }
+
+    .featured-gif-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease, filter 0.45s ease;
+      filter: brightness(0.75);
+    }
+
+    .featured-video-wrap:hover .featured-video-preview,
+    .featured-gif-wrap:hover .featured-gif-preview {
+      transform: scale(1.03);
+      filter: brightness(0.3);
+    }
+
+    .featured-video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .play-btn {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: rgba(124, 111, 239, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(124, 111, 239, 0.55);
+      cursor: pointer;
+    }
+
+    .featured-video-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    /* Content below the video */
+    .featured-card-content {
+      padding: 20px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .featured-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, rgba(124, 111, 239, 0.18), rgba(99, 210, 230, 0.18));
+      border: 1px solid rgba(124, 111, 239, 0.28);
+      color: #a89cff;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 600;
+      font-family: "Inter", sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(124, 111, 239, 0.35);
+      transition: box-shadow 0.2s;
+      flex-shrink: 0;
+
+      &:hover {
+        box-shadow: 0 6px 24px rgba(124, 111, 239, 0.55);
+      }
+    }
+
+    .github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 12.5px;
+      font-weight: 600;
+      font-family: "Inter", sans-serif;
+      cursor: pointer;
+      width: fit-content;
+      transition: border-color 0.2s, color 0.2s;
+
+      &:hover {
+        border-color: var(--accent-purple);
+        color: var(--accent-purple);
+      }
     }
   }
 
