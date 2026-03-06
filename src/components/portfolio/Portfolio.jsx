@@ -269,7 +269,6 @@ const Portfolio = () => {
             {/* Content — below the video */}
             <div className="featured-card-content">
               <div className="featured-card-top">
-                <span className="featured-badge">★ Projet phare</span>
                 <motion.button
                   className="demo-btn"
                   whileHover={{ scale: 1.03 }}
