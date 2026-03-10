@@ -35,7 +35,7 @@ const projects = [
     desc: "Moteur de ray tracing 3D from scratch. Sphères, plans, cônes, cylindres, lumières, ombres et réflexions via fichiers de config.",
     tags: ["C++", "Math 3D", "Graphisme", "Config"],
     github: null,
-    gif: "/Raytracer.gif",
+    gif: "/Raytracer1.gif",
     featured: true,
   },
   {
